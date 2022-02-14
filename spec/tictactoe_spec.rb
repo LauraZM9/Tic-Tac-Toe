@@ -27,6 +27,32 @@ describe TicTacToe do
     expect(result).to eq(expected_board)
   end
 
-  it "can return if a winner"
+  it "Gets winning combination and returns the winner" do
+    # Arrange
+    game = TicTacToe.new
+    input_board = [['X','X','X'], ['','O',''], ['','','']]
+    # expected_board = ['X','X','X','','O','','','','']
+    winner = "X"
+
+    # Act
+    result = game.check_winning(input_board)
+
+    # Assert 
+    expect(result).to eq(winner)
+  end
+
+  it "Gets another winning combination and returns the winner" do
+    # Arrange
+    game = TicTacToe.new
+    input_board = [['O','X',''], ['','O',''], ['','','O']]
+    # expected_board = ['X','X','X','','O','','','','']
+    winner = "O"
+
+    # Act
+    result = game.check_winning(input_board)
+
+    # Assert 
+    expect(result).to eq(winner)
+  end
 
 end
