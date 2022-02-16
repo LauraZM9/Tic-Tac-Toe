@@ -5,14 +5,6 @@ class TicTacToe
     @board = [['','',''], ['','',''], ['','','']]
   end
 
-  def print_board
-    @board.each do |i,j,k|
-      # print "-------- \n"
-      print " #{i} | #{j} | #{k} \n "
-    end
-    # print "⌎--------⌏ \n"
-  end
-
   def game
     moves = 0
     while moves != 9
@@ -77,13 +69,3 @@ tictactoe_game = TicTacToe.new
 tictactoe_game.game
 
 
-# game starts
-# empty board
-# => player makes move
-# update the board
-# check if counter is less than 3
-# check if someone won  => if no one won => next move
-# => computer makes move
-# update the board 
-# check if counter is less than 3
-# check if someone won => if no one won => next move
