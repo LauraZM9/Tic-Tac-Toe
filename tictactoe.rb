@@ -5,12 +5,46 @@ class TicTacToe
     @board = [['','',''], ['','',''], ['','','']]
   end
 
+  def print_board
+    @board.each do |i,j,k|
+      # print "-------- \n"
+      print " #{i} | #{j} | #{k} \n "
+    end
+    # print "⌎--------⌏ \n"
+  end
+
+  def game
+    moves = 0
+    while moves != 9
+      if moves % 2 == 0 
+        row, column = player_one_move
+        update_board('X', row, column)
+      else
+        row, column = player_one_move
+        update_board('O', row, column)
+      end
+      check_winning
+      moves += 1
+    end
+    # code for tie = no one wins
+    puts "It's a tie"
+  end
+
+  def player_one_move
+    print_board
+    puts "what coordinates would you like to place an X"
+    move = gets.chomp
+    row = move[0].to_i
+    column = move[1].to_i
+    return row, column
+  end
+
   def update_board(letter, row, column)
     @board[row][column] = letter
     @board
   end
 
-  def check_winning(input_board)
+  def check_winning
     winning_combo = [
       [0,1,2],
       [3,4,5],
@@ -21,7 +55,7 @@ class TicTacToe
       [1,4,7],
       [2,5,8]
     ]
-    all_elements = input_board.flatten
+    all_elements = @board.flatten
     winning_combo.each do |i,j,k|
       unless all_elements[i] == '' && all_elements[j] == '' && all_elements[k] == ''
         if all_elements[i] == all_elements[j] && all_elements[j] == all_elements[k]
@@ -38,6 +72,10 @@ class TicTacToe
     end
   end
 end
+
+tictactoe_game = TicTacToe.new
+tictactoe_game.game
+
 
 # game starts
 # empty board
