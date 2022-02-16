@@ -45,12 +45,34 @@ describe Board do
     content = "H"
     board_3x3= Board.new(3, content)
 
-
     # Act
     board_matrix = board_3x3.board
     check_content = check_matrix_content(board_matrix, content)
 
     # Assert 
     expect(check_content).to eq(true)
+  end
+
+
+  it "update board with X" do
+    #Arrange
+    new_board = Board.new(3,"")
+
+    # Act
+    updated_boardX = new_board.update_board("X",0,0)
+    element = updated_boardX[0, 0]
+    # Assert 
+    expect(element).to eq("X")
+  end
+
+  it "update board with O" do
+    #Arrange
+    new_board = Board.new(3,"")
+
+    # Act
+    updated_boardO = new_board.update_board("O",1,2)
+    element = updated_boardO[1, 2]
+    # Assert 
+    expect(element).to eq("O")
   end
 end

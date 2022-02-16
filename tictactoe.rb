@@ -1,3 +1,5 @@
+# require_relative "../board.rb"
+
 class TicTacToe
   attr_accessor :board
 
@@ -23,7 +25,6 @@ class TicTacToe
   end
 
   def player_one_move
-    print_board
     puts "what coordinates would you like to place an X"
     move = gets.chomp
     row = move[0].to_i
@@ -31,10 +32,6 @@ class TicTacToe
     return row, column
   end
 
-  def update_board(letter, row, column)
-    @board[row][column] = letter
-    @board
-  end
 
   def check_winning
     winning_combo = [
@@ -65,7 +62,7 @@ class TicTacToe
   end
 end
 
-tictactoe_game = TicTacToe.new
-tictactoe_game.game
+# tictactoe_game = TicTacToe.new
+# tictactoe_game.game
 
 
