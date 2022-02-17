@@ -11,7 +11,8 @@ class Board
   end
 
   def create(dimensions, content)
-    return Matrix.build(dimensions){content}
+    # return Matrix.build(dimensions){content}
+    # return Array.new(dimensions){ Array.new(dimensions) { content } }
   end
 
   def print_board
