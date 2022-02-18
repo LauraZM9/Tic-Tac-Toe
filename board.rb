@@ -1,32 +1,30 @@
-require 'Matrix'
 
 
 class Board
-  attr_accessor :dimensions, :content, :board
+  attr_accessor :board
 
-  def initialize(dimensions, content)
-    @dimensions = dimensions
-    @content = content
-    @board = create(dimensions, content)
+  def initialize
+    @board = [0,1,2,3,4,5,6,7,8]
   end
 
-  def create(dimensions, content)
-    return Matrix.build(dimensions){content}
-  end
+  # def create(dimensions, content)
+  #   Array.new()
+  # end
 
   def print_board
-    @board.to_a.each do |i,j,k|
-      print " #{i} | #{j} | #{k} \n "
-    end
+    puts "#{@board[0]} | #{@board[1]} | #{@board[2]} "
+    puts "---------"
+    puts "#{@board[3]} | #{@board[4]} | #{@board[5]}"
+    puts "---------"
+    puts "#{@board[6]} | #{@board[7]} | #{@board[8]}"
   end
 
-  def update_board(letter, row, column)
-    @board[row, column] = letter
+
+  def update_board(letter, element)
+    @board[element] = letter
     @board
   end
 
 end
 
 
-first = Board.new(3, "H")
-# first.print_board
