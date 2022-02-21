@@ -1,8 +1,8 @@
-require_relative "game"
 require_relative "board"
+require_relative "outcome"
 
-def run (board, game)
-  board.print_board
+def run (board)
+  board.print_layout
   puts "It's X's turn!"
   puts "What is your next move? Pick a number"
   move = gets.chomp
@@ -10,11 +10,10 @@ def run (board, game)
   board.update_board('X', move_position)
   move_num = 1
   while move != 'q'
-    board.print_board
+    board.print_layout
 
-    # stops at 9
-    if move_num == 9
-      puts "It's a tie"
+    if Outcome.is_tie?(board.layout, move_num)
+      print "It's a tie"
       break
     end
 
@@ -25,12 +24,12 @@ def run (board, game)
       move = gets.chomp
       move_position = move.to_i
 
-      while board.board[move_position].is_a? String
-        puts "This is not a valid position. Please choose another option:"
-        board.print_board
-        move = gets.chomp
-        move_position = move.to_i
-      end
+      # while board.layout[move_position].is_a? String
+      #   puts "This is not a valid position. Please choose another option:"
+      #   board.print_layout
+      #   move = gets.chomp
+      #   move_position = move.to_i
+      # end
 
       board.update_board('X', move_position)
     else
@@ -39,18 +38,19 @@ def run (board, game)
       move = gets.chomp
       move_position = move.to_i
 
-      while board.board[move_position].is_a? String
-        puts "This is not a valid position. Please choose another option:"
-        board.print_board
-        move = gets.chomp
-        move_position = move.to_i
-      end
+      # while board.layout[move_position].is_a? String
+      #   puts "This is not a valid position. Please choose another option:"
+      #   board.print_layout
+      #   move = gets.chomp
+      #   move_position = move.to_i
+      # end
 
       board.update_board('O', move_position)
     end
       # checking for a winner
-    if game.check_winning(board.board) == true
-      puts "The winner is #{board.board[move_position]}"
+    if Outcome.check_winning?(board.layout)
+      board.print_layout
+      puts "The winner is #{board.layout[move_position]}"
       break
     end
 
@@ -59,8 +59,8 @@ def run (board, game)
 end
 
 board = Board.new
-game = Game.new
 
-run(board, game)
+
+run(board)
 
 #first , object, second literal board.

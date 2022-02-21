@@ -2,77 +2,65 @@ require_relative "../board.rb"
 
 describe Board do
   
-  def check_matrix_content(matrix, content)
-    matrix_to_array = matrix.to_a.flatten
+  def check_content(board_layout, content)
     truth_array = Array.new
-
-    matrix_to_array.each do |element| 
-      truth_array << (element == "H")
+    board_layout.each do |element| 
+      truth_array << (element == content)
     end
     unless truth_array.include? false
       return true
     end
-
   end
 
 
-  it "will create a matrix with the right row number" do
+  it "will create an empty board of length 9" do
     # Arrange
-    board_3x3= Board.new(3, "H")
+    board = Board.new
 
     # Act
-    board_matrix = board_3x3.board
-    row_count = board_matrix.row_count
+    board_layout = board.layout
+    board_length = board_layout.length()
 
     # Assert 
-    expect(row_count).to eq(3)
+    expect(board_length).to eq(9)
   end
 
-  it "will create a matrix with the right column number" do
+  it "will have an empty layout" do
     # Arrange
-    board_3x3= Board.new(3, "H")
+    content = ''
+    board= Board.new
 
     # Act
-    board_matrix = board_3x3.board
-    column_count = board_matrix.column_count
-
-    # Assert 
-    expect(column_count).to eq(3)
-  end
-
-  it "can check the content of the matrix" do
-    # Arrange
-    content = "H"
-    board_3x3= Board.new(3, content)
-
-    # Act
-    board_matrix = board_3x3.board
-    check_content = check_matrix_content(board_matrix, content)
+    board_layout = board.layout
+    check_content = check_content(board_layout, content)
 
     # Assert 
     expect(check_content).to eq(true)
   end
 
-
   it "update board with X" do
     #Arrange
-    new_board = Board.new(3,"")
+    board = Board.new
 
     # Act
-    updated_boardX = new_board.update_board("X",0,0)
-    element = updated_boardX[0, 0]
+    updated_boardX = board.update_board("X",0)
+    element = updated_boardX[0]
+    
     # Assert 
     expect(element).to eq("X")
   end
 
   it "update board with O" do
     #Arrange
-    new_board = Board.new(3,"")
+    board = Board.new 
 
     # Act
-    updated_boardO = new_board.update_board("O",1,2)
-    element = updated_boardO[1, 2]
+    updated_boardO = board.update_board("O",1)
+    element = updated_boardO[1]
+
     # Assert 
     expect(element).to eq("O")
   end
+
+  
 end

@@ -1,30 +1,27 @@
-
-
 class Board
-  attr_accessor :board
+  attr_accessor :layout
 
   def initialize
-    @board = [0,1,2,3,4,5,6,7,8]
+    @layout = ['' , '', '', '', '', '', '', '', '']
   end
 
-  # def create(dimensions, content)
-  #   Array.new()
+  def print_layout
+    puts "#{@layout[0]} | #{@layout[1]} | #{@layout[2]}"
+    puts "---------"
+    puts "#{@layout[3]} | #{@layout[4]} | #{@layout[5]}"
+    puts "---------"
+    puts "#{@layout[6]} | #{@layout[7]} | #{@layout[8]}"
+  end
+
+  # def valid_position?(input)
+  #   if valid?
+  #     update_board
+  #   else
+  #     ask_again
   # end
 
-  def print_board
-    puts "#{@board[0]} | #{@board[1]} | #{@board[2]} "
-    puts "---------"
-    puts "#{@board[3]} | #{@board[4]} | #{@board[5]}"
-    puts "---------"
-    puts "#{@board[6]} | #{@board[7]} | #{@board[8]}"
-  end
-
-
   def update_board(letter, element)
-    @board[element] = letter
-    @board
+    @layout[element] = letter
+    @layout
   end
-
 end
-
-
