@@ -1,15 +1,14 @@
 require_relative "board"
 require_relative "outcome"
+require_relative "player"
 
-def run (board)
+def run (board, player)
   board.print_layout
   puts "It's X's turn!"
-  puts "What is your next move? Pick a number"
-  move = gets.chomp
-  move_position = move.to_i
+  move_position = player.input(board.layout)
   board.update_board('X', move_position)
   move_num = 1
-  while move != 'q'
+  while move_position < 10
     board.print_layout
 
     if Outcome.is_tie?(board.layout, move_num)
@@ -17,37 +16,16 @@ def run (board)
       break
     end
 
-      # populate board
     if move_num % 2 == 0 
       puts "It's X's turn!"
-      puts "What is your next move? Pick a number"
-      move = gets.chomp
-      move_position = move.to_i
-
-      # while board.layout[move_position].is_a? String
-      #   puts "This is not a valid position. Please choose another option:"
-      #   board.print_layout
-      #   move = gets.chomp
-      #   move_position = move.to_i
-      # end
-
+      move_position = player.input(board.layout)
       board.update_board('X', move_position)
     else
       puts "It's O's turn!"
-      puts "What is your next move? Pick a number"
-      move = gets.chomp
-      move_position = move.to_i
-
-      # while board.layout[move_position].is_a? String
-      #   puts "This is not a valid position. Please choose another option:"
-      #   board.print_layout
-      #   move = gets.chomp
-      #   move_position = move.to_i
-      # end
-
+      move_position = player.input(board.layout)
       board.update_board('O', move_position)
     end
-      # checking for a winner
+
     if Outcome.check_winning?(board.layout)
       board.print_layout
       puts "The winner is #{board.layout[move_position]}"
@@ -59,8 +37,9 @@ def run (board)
 end
 
 board = Board.new
+player = Player.new
 
 
-run(board)
+run(board, player)
 
 #first , object, second literal board.
