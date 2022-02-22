@@ -1,21 +1,22 @@
 require_relative "../player.rb"
 
 describe Player do
-  # it 'asks for input' do
-  #   board = ['X','','','','O','','','','']
-  #   player = Player.new
-  #   allow(player).to receive(:gets).and_return('')
-  #   # expect(player).to receive(:gets)
-  #   player.player_input(board)
-  # end
+  fit 'asks for input' do
+    board = ['X','','','','O','','','','']
+    player = Player.new
+    allow(player).to receive(:gets).and_return('Ting is the best')
+    # expect(player).to receive(:gets)
+    player.input(board)
+  end
 
   it "can find if the input matches the allowed characters" do
     #Arrange
     player = Player.new
+    player.move = 0
     expected_result = true
 
     #Act
-    result = player.is_valid?(0)
+    result = player.is_valid?
 
     #Assert
     expect(result).to eq(expected_result)
@@ -25,10 +26,11 @@ describe Player do
   it "can return false if the wrong character has been input" do
       #Arrange
       player = Player.new
+      player.move = "k"
       expected_result = false
 
       #Act
-      result = player.is_valid?("k")
+      result = player.is_valid?
 
       #Assert
       expect(result).to eq(expected_result)
@@ -39,10 +41,10 @@ describe Player do
     player = Player.new
     expected_result = true
     board = ['X','','','','O','','','','']
-    move = 2
+    player.move = 2
 
     #Act
-    result = player.is_available?(board,move)
+    result = player.is_available?(board)
 
     #Assert
     expect(result).to eq(expected_result)

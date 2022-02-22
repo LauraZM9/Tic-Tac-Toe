@@ -16,7 +16,7 @@ TESTING_COMBINATIONS = {
 describe Outcome do 
   it "gets winning combination and returns the winner" do
     # Arrange
-    input_board = TESTING_COMBINATIONS['wrong']
+    input_board = TESTING_COMBINATIONS['diagonal']
     
     # Act
     result = Outcome.check_winning?(input_board)
