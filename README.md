@@ -1,4 +1,7 @@
 # Tic-Tac-Toe
+<a href="https://learn.madetech.com/sparring/tic-tac-toe/">Tic Tac Toe instructions</a>
+
+<a href="https://www.madetech.com/"> MadeTech</a>
 
 # Initial setup
 Install gems using:
