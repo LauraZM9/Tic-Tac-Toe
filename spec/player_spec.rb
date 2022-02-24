@@ -1,13 +1,13 @@
 require_relative "../player.rb"
 
 describe Player do
-  fit 'asks for input' do
-    board = ['X','','','','O','','','','']
-    player = Player.new
-    allow(player).to receive(:gets).and_return('Ting is the best')
-    # expect(player).to receive(:gets)
-    player.input(board)
-  end
+  # fit 'asks for input' do
+  #   board = ['X','','','','O','','','','']
+  #   player = Player.new
+  #   allow(player).to receive(:gets).and_return('Ting is the best', 'Ting is still the best', 'whatsaap', '0')
+  #   # expect(player).to receive(:gets)
+  #   player.input(board)
+  # end
 
   it "can find if the input matches the allowed characters" do
     #Arrange

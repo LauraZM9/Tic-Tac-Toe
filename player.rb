@@ -6,7 +6,7 @@ class Player
     puts "What is your next move? Pick a number from 0 to 8"
     @move = gets.chomp.to_i
     while !is_valid? || !is_available?(board)
-      puts "This is not a valid position. Please choose another option:"
+      puts "This is not a valid option or the position is not available. Please choose another option:"
       @move = gets.chomp.to_i
     end
     return @move

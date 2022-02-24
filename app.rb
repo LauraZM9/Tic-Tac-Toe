@@ -8,7 +8,7 @@ def run (board, player)
   move_position = player.input(board.layout)
   board.update_board('X', move_position)
   move_num = 1
-  while move_num < 10
+  while move_position != "q"
     board.print_layout
 
     if Outcome.is_tie?(board.layout, move_num)

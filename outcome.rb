@@ -1,49 +1,54 @@
-WINNING_COMBOS = [
-  [0,1,2],
-  [3,4,5],
-  [6,7,8],
-  [0,4,8],
-  [2,4,6],
-  [0,3,6],
-  [1,4,7],
-  [2,5,8]
-]
-
 class Outcome
-  def self.check_winning?(all_elements)
-    WINNING_COMBOS.each do |i,j,k|
-      unless invalid_elements?(all_elements, i, j, k)
-        if all_elements_equal?(all_elements, i, j, k)
-          return true
-          break
-        else
-          return false
+  @WINNING_COMBOS = [
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,4,8],
+    [2,4,6],
+    [0,3,6],
+    [1,4,7],
+    [2,5,8]
+  ]
+  def self.check_winning?(board)
+    result = false
+    @WINNING_COMBOS.each do |i,j,k|
+      unless invalid_elements?(board, i, j, k)
+        if elements_equal?(board, i, j, k)
+          result = elements_equal?(board, i, j, k)
+        # if elements_equal?(board, i, j, k)
+        #   return true
+        #   puts "hello"
+          # break
+        # else
+        #   return false
+        #   puts "goodbye"
         end
       end
     end
+    result
   end
 
   def self.is_tie?(board_layout, move_num)
-    if board_layout.length == move_num
-      return true
-    end
+    board_layout.length == move_num
   end
 
   private
 
-  def self.invalid_elements? (all_elements, index1, index2, index3)
-    all_elements[index1] == '' && 
-    all_elements[index2] == '' && 
-    all_elements[index3] == ''
+  def self.invalid_elements? (board, index1, index2, index3)
+    board[index1] == '' && 
+    board[index2] == '' && 
+    board[index3] == ''
   end
 
-  def self.all_elements_equal? (all_elements, index1, index2, index3)
-    all_elements[index1] == all_elements[index2] && 
-    all_elements[index2] == all_elements[index3] &&
-    all_elements[index3] == all_elements[index1]
+  def self.elements_equal? (board, index1, index2, index3)
+    board[index1] == board[index2] && 
+    board[index2] == board[index3] &&
+    board[index3] == board[index1]
   end
 end
 
+# Outcome.check_winning?(['X','O','O','X','O','','X','',''])
+# Outcome.check_winning?(['X','O','O','X','O','','X','',''])
 
 # app - calling game functions def game - call print , call update, puts messages to players. 
 # board - creating / updating board.

@@ -13,15 +13,8 @@ class Board
     puts "#{@layout[6]} | #{@layout[7]} | #{@layout[8]}"
   end
 
-  # def valid_position?(input)
-  #   if valid?
-  #     update_board
-  #   else
-  #     ask_again
-  # end
-
-  def update_board(letter, element)
-    @layout[element] = letter
+  def update_board(letter, position)
+    @layout[position] = letter
     @layout
   end
 end

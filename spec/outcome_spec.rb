@@ -4,25 +4,27 @@ require_relative "../board.rb"
 
 TESTING_COMBINATIONS = {
   # one row
-  'row' => ['X','X','X','','O','','','',''],
+  ['X','X','X','','O','','','',''] => true,
   # one column
-  'column' => ['X','','','X','O','','X','',''],
+  ['X','O','O','X','O','','X','',''] => true,
   # one diagonal
-  'diagonal' => ['X','','','','X','','','','X'],
+  ['X','','','','X','','','','X'] => true,
   # one false
-  'wrong' => ['X','X','','','O','','','','']
+  ['X','X','','','O','','','',''] => false
 }
 
 describe Outcome do 
-  it "gets winning combination and returns the winner" do
-    # Arrange
-    input_board = TESTING_COMBINATIONS['diagonal']
-    
-    # Act
-    result = Outcome.check_winning?(input_board)
+  TESTING_COMBINATIONS.each do |key, value|
+    it "gets winning combination and returns the winner" do
+      # Arrange
+      input_board = key
+      
+      # Act
+      result = Outcome.check_winning?(input_board)
 
-    # Assert 
-    expect(result).to eq(false)
+      # Assert 
+      expect(result).to eq(value)
+    end
   end
 
   it "can return when there has been a tie" do
