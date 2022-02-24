@@ -27,16 +27,5 @@ describe Outcome do
     end
   end
 
-  it "can return when there has been a tie" do
-    #Arrange
-    board = Board.new
-    move_num = 9
 
-    #Act
-    board_layout = board.layout
-    result = Outcome.is_tie?(board_layout, move_num)
-    
-    #Assert
-    expect(result).to eq(true)
-  end
 end
