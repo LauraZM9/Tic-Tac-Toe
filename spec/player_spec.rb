@@ -1,4 +1,4 @@
-require_relative "../player.rb"
+require_relative "../lib/player"
 
 describe Player do
   # fit 'asks for input' do

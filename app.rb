@@ -1,6 +1,6 @@
-require_relative "board"
-require_relative "outcome"
-require_relative "player"
+require_relative "lib/board"
+require_relative "lib/outcome"
+require_relative "lib/player"
 
 def run (board, player)
   board.print_layout

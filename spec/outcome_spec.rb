@@ -1,5 +1,5 @@
-require_relative "../outcome.rb"
-require_relative "../board.rb"
+require_relative "../lib/outcome"
+require_relative "../lib/board"
 
 
 TESTING_COMBINATIONS = {
