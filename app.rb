@@ -1,5 +1,5 @@
 require_relative "lib/board"
-require_relative "lib/outcome"
+# require_relative "lib/outcome"
 require_relative "lib/player"
 
 def run (board, player)
@@ -11,7 +11,7 @@ def run (board, player)
   while move_position != "q"
     board.print_layout
 
-    if Outcome.is_tie?(board.layout, move_num)
+    if board.is_tie?(move_num)
       print "It's a tie"
       break
     end
@@ -26,7 +26,7 @@ def run (board, player)
       board.update_board('O', move_position)
     end
 
-    if Outcome.check_winning?(board.layout)
+    if board.check_winning?
       board.print_layout
       puts "The winner is #{board.layout[move_position]}"
       break
