@@ -12,6 +12,35 @@ describe Board do
     end
   end
 
+  it "can see an index is not occupied with an X or an O" do
+    #Arrange
+    board = Board.new
+    expected_result = true
+    board.layout = ['X','','','','O','','','','']
+    move = 2
+
+    #Act
+    result = board.is_available?(move)
+
+    #Assert
+    expect(result).to eq(expected_result)
+  end
+
+  it "can see an index is occupied with an X or an O" do
+    #Arrange
+    board = Board.new
+    expected_result = false
+    board.layout = ['X','','','','O','','','','']
+    move = 0
+
+    #Act
+    result = board.is_available?(move)
+
+    #Assert
+    expect(result).to eq(expected_result)
+  end
+
+
 
   it "will create an empty board of length 9" do
     # Arrange
