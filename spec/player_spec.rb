@@ -11,7 +11,7 @@ describe Player do
   it "can find if the input matches the allowed characters" do
     #Arrange
     player = Player.new
-    player.move = 0
+    player.move = "0"
     expected_result = true
 
     #Act
