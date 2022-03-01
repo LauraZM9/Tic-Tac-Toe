@@ -5,7 +5,7 @@ require_relative "lib/player"
 def run (board, player)
   board.print_layout
   puts "It's X's turn!"
-  move_position = player.input(board.layout)
+  move_position = next_move(board, player)
   board.update_board('X', move_position)
   move_num = 1
   while move_position != "q"
@@ -18,11 +18,11 @@ def run (board, player)
 
     if move_num % 2 == 0 
       puts "It's X's turn!"
-      move_position = player.input(board.layout)
+      move_position = next_move(board, player)
       board.update_board('X', move_position)
     else
       puts "It's O's turn!"
-      move_position = player.input(board.layout)
+      move_position = next_move(board, player)
       board.update_board('O', move_position)
     end
 
@@ -34,6 +34,22 @@ def run (board, player)
 
     move_num += 1
   end
+end
+
+def next_move(board, player)
+  puts "What is your next move? Pick a number from 0 to 8"
+  move = player.input
+  move_int = move.to_i
+  while !player.is_valid? || !board.is_available?(move_int)
+    if !player.is_valid? 
+      puts "Wrong selection please select from 0-8"
+    elsif !board.is_available?(move_int)
+      puts "This position is taken"
+    end
+    move = player.input
+    move_int = move.to_i
+  end
+  return move_int
 end
 
 board = Board.new

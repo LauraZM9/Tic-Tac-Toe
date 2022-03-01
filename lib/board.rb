@@ -25,6 +25,10 @@ class Board
     puts "#{@layout[6]} | #{@layout[7]} | #{@layout[8]}"
   end
 
+  def is_available?(move)
+    @layout[move] != "X" && @layout[move] != "O"
+  end
+
   def update_board(letter, position)
     @layout[position] = letter
     @layout
