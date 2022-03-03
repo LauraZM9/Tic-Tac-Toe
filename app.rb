@@ -58,5 +58,3 @@ computer = Computer.new
 
 
 run(board, player, computer)
-
-#first , object, second literal board.

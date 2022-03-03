@@ -1,7 +1,9 @@
 class Computer
   attr_accessor :move
   def initializer; end
-  def main; end
+  def main (board)
+    6
+  end
 
   def input
     @move = rand(9).to_s
