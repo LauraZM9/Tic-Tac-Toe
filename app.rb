@@ -1,8 +1,8 @@
 require_relative "lib/board"
-# require_relative "lib/outcome"
 require_relative "lib/player"
+require_relative "lib/computer"
 
-def run (board, player)
+def run (board, player, computer)
   board.print_layout
   puts "It's X's turn!"
   move_position = next_move(board, player)
@@ -22,7 +22,7 @@ def run (board, player)
       board.update_board('X', move_position)
     else
       puts "It's O's turn!"
-      move_position = next_move(board, player)
+      move_position = next_move(board, computer)
       board.update_board('O', move_position)
     end
 
@@ -54,8 +54,9 @@ end
 
 board = Board.new
 player = Player.new
+computer = Computer.new
 
 
-run(board, player)
+run(board, player, computer)
 
 #first , object, second literal board.
