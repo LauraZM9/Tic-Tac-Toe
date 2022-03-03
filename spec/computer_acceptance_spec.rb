@@ -18,7 +18,7 @@ describe Computer do
       "O", "X", ""
     ]
     # act
-    move = computer.main(board.layout)
+    move = computer.main(board)
     board.update_board("O", move)
     # assert
     expect(board.layout).to eq(expected_board)
@@ -28,21 +28,37 @@ describe Computer do
     # arrange
     board = Board.new
     computer = Computer.new
-    board.layout = [ # choose another win/draw example as this is the same as firs test
-      "X", "X", "O",
-      "O", "O", "X",
+    board.layout = [
+      "O", "X", "X",
+      "X", "O", "O",
       "" , "X", ""
     ]
     expected_board = [
-      "X", "X", "O",
-      "O", "O", "X",
-      "O", "X", ""
+      "O", "X", "X",
+      "X", "O", "O",
+      "" , "X", "O"
     ]
     # act
-    move = computer.main(board.layout)
+    move = computer.main(board)
     board.update_board("O", move)
     # assert
     expect(board.layout).to eq(expected_board)
+  end
+
+  xit "if given an empty grid, all moves will be scored as a draw" do
+   # arrange
+   board = Board.new
+   computer = Computer.new
+   board.layout = [
+     "", "", "",
+     "", "", "",
+     "" , "", ""
+   ]
+   # act
+   move = computer.main(board.layout)
+   board.update_board("O", move)
+   # assert
+   expect(board.layout).to eq(expected_board)
   end
 
   xit "will choose to play the winning spot if there is one" do
@@ -76,9 +92,6 @@ describe Computer do
   end
 
   it "will choose the first losing space if loss is unavoidable" do
-  end
-
-  it "if given an empty grid, all moves will be scored as a draw" do
   end
 
 end
