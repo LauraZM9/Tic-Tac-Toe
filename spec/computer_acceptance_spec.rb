@@ -45,20 +45,16 @@ describe Computer do
     expect(board.layout).to eq(expected_board)
   end
 
-  xit "if given an empty grid, all moves will be scored as a draw" do
+  it "if given an empty grid, all moves will be scored as a draw" do
    # arrange
    board = Board.new
    computer = Computer.new
-   board.layout = [
-     "", "", "",
-     "", "", "",
-     "" , "", ""
-   ]
+   
    # act
-   move = computer.main(board.layout)
-   board.update_board("O", move)
+   move = computer.main(board)
+
    # assert
-   expect(board.layout).to eq(expected_board)
+   expect(move).to eq(5)
   end
 
   xit "will choose to play the winning spot if there is one" do
@@ -82,16 +78,16 @@ describe Computer do
     expect(board.layout).to eq(expected_board)
   end 
 
-  it "will not alter the grid when asked to choose a move" do
+  xit "will not alter the grid when asked to choose a move" do
   end
 
-  it "will prevent opponent from winning if it can" do
+  xit "will prevent opponent from winning if it can" do
   end
 
-  it "will choose the first move that leads to a draw instead of losing - grid?" do
+  xit "will choose the first move that leads to a draw instead of losing - grid?" do
   end
 
-  it "will choose the first losing space if loss is unavoidable" do
+  xit "will choose the first losing space if loss is unavoidable" do
   end
 
 end

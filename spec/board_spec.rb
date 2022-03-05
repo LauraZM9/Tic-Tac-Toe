@@ -40,8 +40,6 @@ describe Board do
     expect(result).to eq(expected_result)
   end
 
-
-
   it "will create an empty board of length 9" do
     # Arrange
     board = Board.new
@@ -91,6 +89,27 @@ describe Board do
     expect(element).to eq("O")
   end
 
+  it "will remove en element from the board" do
+    #Arrange
+    board = Board.new 
+    board.layout = [
+      'X','', '',
+      '', 'O','',
+      '', '', ''
+    ] 
+    expected_board = [
+      '','', '',
+      '', 'O','',
+      '', '', ''
+    ] 
+
+    # Act
+    modified_board = board.remove_mark(0)
+
+    # Assert 
+    expect(modified_board).to eq(expected_board)
+  end
+
   it "can return when there has been a tie" do
     #Arrange
     board = Board.new
@@ -128,4 +147,14 @@ describe Board do
     end
   end
   
+  fit 'can check if a board is empty' do
+    # Arrange
+    board = Board.new
+    
+    # Act
+    result = board.empty?
+
+    # Assert 
+    expect(result).to eq(true)  
+  end
 end
