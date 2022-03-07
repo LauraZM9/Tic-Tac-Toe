@@ -22,7 +22,7 @@ def run (board, player, computer)
       board.update_board('X', move_position)
     else
       puts "It's O's turn!"
-      move_position = next_move(board, computer)
+      move_position = computer.main(board)
       board.update_board('O', move_position)
     end
 

@@ -45,7 +45,7 @@ describe Computer do
     expect(board.layout).to eq(expected_board)
   end
 
-  it "if given an empty grid, all moves will be scored as a draw" do
+  xit "if given an empty grid, all moves will be scored as a draw" do
    # arrange
    board = Board.new
    computer = Computer.new
@@ -57,22 +57,22 @@ describe Computer do
    expect(move).to eq(5)
   end
 
-  xit "will choose to play the winning spot if there is one" do
+  it "will choose to play the winning spot if there is one" do
     # arrange
     board = Board.new
     computer = Computer.new
     board.layout = [
-      "X", "", "O",
-      "", "O", "",
-      "" , "X", "X"
+      "X", "X", "O",
+      "",  "O", "X",
+      "" ,  "",  ""
     ]
     expected_board = [
-      "X", "O", "O",
-      "X", "O", "X",
-      "O", "X", "O"
+      "X", "X", "O",
+      "",  "O", "X",
+      "O",  "",  ""
     ]
     # act
-    move = computer.main(board.layout)
+    move = computer.main(board)
     board.update_board("O", move)
     # assert
     expect(board.layout).to eq(expected_board)
@@ -81,7 +81,46 @@ describe Computer do
   xit "will not alter the grid when asked to choose a move" do
   end
 
-  xit "will prevent opponent from winning if it can" do
+  it "will prevent opponent from winning if it can" do
+    # arrange
+    board = Board.new
+    computer = Computer.new
+    board.layout = [
+      "X", "X", "",
+      "",  "O", "X",
+      "" ,  "", "O"
+    ]
+    expected_board = [
+      "X", "X", "O",
+      "",  "O", "X",
+      "",  "",  "O"
+    ]
+    # act
+    move = computer.main(board)
+    board.update_board("O", move)
+    # assert
+    expect(board.layout).to eq(expected_board)
+  end
+
+  it "will prevent opponent from winning if it can in a different scenario" do
+    # arrange
+    board = Board.new
+    computer = Computer.new
+    board.layout = [
+      "X", "", "",
+      "X",  "", "X",
+      "O" ,  "", "O"
+    ]
+    expected_board = [
+      "X", "", "",
+      "X",  "", "X",
+      "O" ,  "O", "O"
+    ]
+    # act
+    move = computer.main(board)
+    board.update_board("O", move)
+    # assert
+    expect(board.layout).to eq(expected_board)
   end
 
   xit "will choose the first move that leads to a draw instead of losing - grid?" do

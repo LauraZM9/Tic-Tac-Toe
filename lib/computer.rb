@@ -7,14 +7,12 @@ class Computer
   def initialize; end
 
   def main (board)
-    if board.empty?
-      return 5 # this should be a random move
-    else
-      simulation_board = Board.new
-      simulation_board.layout = board.layout
-      available_spaces = available_spots(simulation_board.layout)
+    simulation_board = Board.new
+    simulation_board.layout = board.layout
+    available_spaces = available_spots(simulation_board.layout)
+    ["O", "X"].each do |element|
       available_spaces.each do |index|
-        simulation_board.update_board("O", index)
+        simulation_board.update_board(element, index)
         if simulation_board.check_winning?
           return index
           break
@@ -23,6 +21,7 @@ class Computer
         end
       end
     end
+    return available_spaces.sample
   end
 
   def available_spots(layout)
