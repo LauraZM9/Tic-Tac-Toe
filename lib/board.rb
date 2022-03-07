@@ -34,10 +34,14 @@ class Board
     @layout
   end
 
+  def remove_mark(position)
+    @layout[position] = ''
+    @layout
+  end
+
   def is_tie?(move_num)
     @layout.length == move_num
   end
-
 
   def check_winning?
     result = false
@@ -49,6 +53,17 @@ class Board
       end
     end
     result
+  end
+
+  def empty?
+    # same as check content -> TODO: remove duplications
+    truth_array = Array.new
+    @layout.each do |element| 
+      truth_array << (element == '')
+    end
+    unless truth_array.include? false
+      return true
+    end
   end
 
   private
