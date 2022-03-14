@@ -6,3 +6,5 @@ source "https://rubygems.org"
 gem 'rspec'
 gem 'rubocop', '~> 1.25', require: false
 gem 'coderay'
+gem 'rgl'
+gem 'sinatra'

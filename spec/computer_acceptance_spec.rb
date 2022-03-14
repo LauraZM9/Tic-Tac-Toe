@@ -2,7 +2,6 @@ require_relative "../lib/computer"
 require_relative "../lib/board"
 
 describe Computer do
-
   it "will choose the first winning move (instead of losing)" do
     # arrange
     board = Board.new
