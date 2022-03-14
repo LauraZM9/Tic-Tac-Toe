@@ -1,4 +1,6 @@
-require_relative "../lib/player"
+# frozen_string_literal: true
+
+require_relative '../lib/player'
 
 describe Player do
   it 'asks for input' do
@@ -15,11 +17,10 @@ describe Player do
     expected_result = true
 
     # Act
-    result = player.is_valid?
+    result = player.valid?
 
     # Assert
     expect(result).to eq(expected_result)
-
   end
 
   it 'can return false if the wrong character has been input' do
@@ -29,7 +30,7 @@ describe Player do
     expected_result = false
 
     # Act
-    result = player.is_valid?
+    result = player.valid?
 
     # Assert
     expect(result).to eq(expected_result)
