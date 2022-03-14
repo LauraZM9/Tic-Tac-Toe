@@ -100,7 +100,7 @@ describe Board do
     board = Board.new
     move_num = 9
     # Act
-    result = board.is_tie?(move_num)
+    result = board.tie?(move_num)
     # Assert
     expect(result).to eq(true)
   end

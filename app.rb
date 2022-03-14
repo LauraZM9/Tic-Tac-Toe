@@ -13,7 +13,7 @@ def run(board, player, computer)
   while move_position != -1
     board.print_layout
 
-    if board.is_tie?(move_num)
+    if board.tie?(move_num)
       print "It's a tie"
       break
     end

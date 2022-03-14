@@ -41,7 +41,7 @@ class Board
     @layout
   end
 
-  def is_tie?(move_num)
+  def tie?(move_num)
     @layout.length == move_num
   end
 
@@ -49,7 +49,7 @@ class Board
     result = false
     @winning_combos.each do |i, j, k|
       unless invalid_elements?(i, j, k)
-        next result = elements_equal?(i, j, k) if elements_equal?(i, j, k)
+        next result = equal_elements?(i, j, k) if equal_elements?(i, j, k)
       end
     end
     result
@@ -63,7 +63,7 @@ class Board
     @layout[index3] == ''
   end
 
-  def elements_equal?(index1, index2, index3)
+  def equal_elements?(index1, index2, index3)
     @layout[index1] == @layout[index2] &&
     @layout[index2] == @layout[index3] &&
     @layout[index3] == @layout[index1]
