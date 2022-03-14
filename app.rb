@@ -28,7 +28,7 @@ def run(board, player, computer)
       board.update_board('O', move_position)
     end
 
-    if board.check_winning?
+    if board.win?
       board.print_layout
       puts "The winner is #{board.layout[move_position]}"
       break
@@ -42,10 +42,10 @@ def next_move(board, player)
   puts 'What is your next move? Pick a number from 0 to 8'
   move = player.input
   move_int = move.to_i
-  while !player.valid? || !board.is_available?(move_int)
+  while !player.valid? || !board.space_available?(move_int)
     if !player.valid?
       puts 'Wrong selection please select from 0-8'
-    elsif !board.is_available?(move_int)
+    elsif !board.space_available?(move_int)
       puts 'This position is taken'
     end
     move = player.input

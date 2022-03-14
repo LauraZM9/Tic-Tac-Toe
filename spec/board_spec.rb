@@ -18,7 +18,7 @@ describe Board do
     board.layout = ['X', '', '', '', 'O', '', '', '', '']
     move = 2
     # Act
-    result = board.is_available?(move)
+    result = board.space_available?(move)
     # Assert
     expect(result).to eq(expected_result)
   end
@@ -30,7 +30,7 @@ describe Board do
     board.layout = ['X', '', '', '', 'O', '', '', '', '']
     move = 0
     # Act
-    result = board.is_available?(move)
+    result = board.space_available?(move)
     # Assert
     expect(result).to eq(expected_result)
   end
@@ -122,7 +122,7 @@ describe Board do
       board = Board.new
       board.layout = key
       # Act
-      result = board.check_winning?
+      result = board.win?
       # Assert
       expect(result).to eq(value)
     end

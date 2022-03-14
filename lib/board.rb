@@ -27,7 +27,7 @@ class Board
     puts "#{@layout[6]} | #{@layout[7]} | #{@layout[8]}"
   end
 
-  def is_available?(move)
+  def space_available?(move)
     @layout[move] != 'X' && @layout[move] != 'O'
   end
 
@@ -45,7 +45,7 @@ class Board
     @layout.length == move_num
   end
 
-  def check_winning?
+  def win?
     result = false
     @winning_combos.each do |i, j, k|
       unless invalid_elements?(i, j, k)

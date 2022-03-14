@@ -12,7 +12,7 @@ class Computer
     %w[O X].each do |element|
       available_spaces.each do |index|
         simulation_board.update_board(element, index)
-        if simulation_board.check_winning?
+        if simulation_board.win?
           return index
         else
           simulation_board.remove_mark(index)
